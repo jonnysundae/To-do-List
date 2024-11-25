@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 // Informa que é uma entidade
@@ -16,10 +17,19 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Gera o valor de ID seguindo uma estratégia de geração
     private Long id;
+    @NotBlank
     private String nome;
+    @NotBlank
     private String descricao;
     private boolean realizado;
     private int prioridade;
+
+    public Todo(String nome, String descricao, boolean realizado, int prioridade) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.realizado = realizado;
+        this.prioridade = prioridade;
+    }
 
     //Gerar os Getters e Setters pelo caminho: Botão Direito -> Source Action
     public Long getId() {
